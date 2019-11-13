@@ -20,7 +20,8 @@ const Login = ()=>{
         setLoading(true);
         axios.post("http://localhost:5000/api/login", input)
             .then((res)=>{
-                console.log(res)
+                console.log(res.data.payload)
+                sessionStorage.setItem("token", res.data.payload);
                 
             })
             .catch((err)=>console.log(err))
