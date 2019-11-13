@@ -38,15 +38,24 @@ class Friends extends React.Component{
     }
 
 
+    // deleteFriend=(id)=>{
+    //     console.log("before", this.state.friends)
+    //     this.setState({
+    //         friends:this.state.friends.filter((f)=>{
+    //             return f.id !==id;
+    //         })
+    //     })
+    //     console.log(id)
+    //     console.log("after", this.state.friends)
+    // }
+
     deleteFriend=(id)=>{
-        console.log("before", this.state.friends)
-        this.setState({
-            friends:this.state.friends.filter((f)=>{
-                return f.id !==id;
-            })
-        })
-        console.log(id)
-        console.log("after", this.state.friends)
+        const Auth = axiosWithAuth();
+
+        Auth.delete(`http://localhost:5000/api/friends/${id}`)
+            .then((res)=>{console.log(res)})
+
+        this.returnData();
     }
 
     addFriend=(friend)=>{
