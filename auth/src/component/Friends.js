@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Friend from "./Friend";
+import AddFriend from "./AddFriend";
 
 const axiosWithAuth = ()=>{
    return axios.create({
@@ -36,6 +37,7 @@ class Friends extends React.Component{
 
     }
 
+
     deleteFriend=(id)=>{
         console.log("before", this.state.friends)
         this.setState({
@@ -47,10 +49,25 @@ class Friends extends React.Component{
         console.log("after", this.state.friends)
     }
 
+    addFriend=(friend)=>{
+
+        const Auth = axiosWithAuth();
+
+        Auth.post("http://localhost:5000/api/friends", friend)
+        .then((res)=>{
+            console.log(res)
+        })
+
+        this.returnData();
+    }
+
+ 
+
     render(){
         return(
             <div>
                 <h1>Friends</h1>
+                <AddFriend post = {this.addFriend}/>
                 {this.state.friends.map((f)=>(
                     <>
                         <Friend name = {f.name} id={f.id} age = {f.age} del = {this.deleteFriend}/>

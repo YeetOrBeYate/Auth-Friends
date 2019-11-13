@@ -32,7 +32,7 @@ const Login = ()=>{
         <>
             <form>
                 <div>
-                    <h1>{isLoading ? "Loadin scrub lol": "I'm a bot lol"}</h1>
+                    <h1>{isLoading ? "Loading lol": "Welcome"}</h1>
                     <label>UserName:</label>
                     <input value = {input.username} onChange={handleInput} name="username" required></input>
                 </div>
@@ -40,7 +40,7 @@ const Login = ()=>{
                     <label>Password:</label>
                     <input value = {input.password} onChange={handleInput} name="password" required></input>
                 </div>
-                <button onClick={handleClick}>Bot</button>
+                <button onClick={handleClick}>login</button>
             </form>
         </>
     );
